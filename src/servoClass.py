@@ -1,5 +1,8 @@
 
 
+
+
+
 class Servo:
     def __init__(self, pin, minAngle, maxAngle):
         self.__pin = pin
@@ -64,21 +67,8 @@ class Arm:
        self.lowerArmLength = ...
        self.wristLength = ...
        
-    def moveBase(self, angle):
-        self.base.angle = angle
-    
-    def moveShoulder(self, angle):
-        self.shoulder.angle = angle
-
-    def moveElbow(self, angle):
-        self.elbow.angle = angle
-
-    def moveWrist(self, angle):
-        self.wrist.angle = angle
-    
-    def moveGripper(self, angle):
-        self.gripper.angle = angle
-
+    def moveJoint(self, joint, angle):
+        self.joint.angle = angle
 
     def moveArm(self, x, y, z):
         ## WRITE CODE TO MOVE ARM TO POSITION (x, y, z)
