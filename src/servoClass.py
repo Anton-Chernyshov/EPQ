@@ -1,8 +1,5 @@
 
 
-
-
-
 class Servo:
     def __init__(self, pin, minAngle, maxAngle):
         self.__pin = pin
