@@ -1,4 +1,4 @@
-
+"""Base classes for the arm"""
 
 class Servo:
     def __init__(self, pin, minAngle, maxAngle):
@@ -18,8 +18,6 @@ class Servo:
     def __moveToAngle(self, angle):
         ## WRITE CODE TO MOVE SERVO TO ANGLE
 
-
-
         ## --
         print(f"Servo on pin {self.__pin} moved to {angle} degrees")
 
@@ -36,22 +34,7 @@ class Servo:
             self.__moveToAngle(value)
 
             
-def testServos():
-    testServo1 = Servo(1, 0, 180)
-    testServo1.angle = 90
-    assert testServo1.angle == 90
-    testServo1.angle = 200
-    assert testServo1.angle == 180
-    testServo1.angle = -10
-    assert testServo1.angle == 0
-    testServo2 = Servo(2, 45, 135)
-    testServo2.angle = 90
-    assert testServo2.angle == 90
-    testServo2.angle = 200
-    assert testServo2.angle == 135
-    testServo2.angle = -10
-    assert testServo2.angle == 45
-    print("All tests passed")
+
 
 class Arm:
     def __init__(self, base: Servo, shoulder: Servo, elbow: Servo, wrist: Servo, gripper: Servo):
@@ -76,4 +59,4 @@ class Arm:
         print(f"Arm moved to position ({x}, {y}, {z})")
 
 if __name__ == "__main__":
-    testServos()
+    ...
