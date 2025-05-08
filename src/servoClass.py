@@ -1,28 +1,32 @@
 """Base classes for the arm"""
+#import gpiozero
+import math
 
 class Servo:
     def __init__(self, pin, minAngle, maxAngle):
         self.__pin = pin
-        self.minAngle = minAngle
-        self.maxAngle = maxAngle
+        self.__minAngle = minAngle
+        self.__maxAngle = maxAngle
         self.__angle = 0
+        self.__servo = gpiozero.AngularServo(self.__pin, self.__minAngle, self.__maxAngle)
     
     @property
     def pin(self) -> int:
         return self.__pin
-
+    
     @property
     def angle(self) -> int:
         return self.__angle
 
     def __moveToAngle(self, angle):
         ## WRITE CODE TO MOVE SERVO TO ANGLE
-
+        self.__servo.angle = angle
         ## --
         print(f"Servo on pin {self.__pin} moved to {angle} degrees")
 
     @angle.setter
-    def angle(self, value):
+    def angle(self, value: int):
+        """Move to angle value and clamp between minAngle and maxAngle"""
         if value < self.minAngle:
             self.__angle = self.minAngle
             self.__moveToAngle(self.minAngle)
@@ -37,7 +41,7 @@ class Servo:
 
 
 class Arm:
-    def __init__(self, base: Servo, shoulder: Servo, elbow: Servo, wrist: Servo, gripper: Servo):
+    def __init__(self, base: Servo, shoulder: Servo, elbow: Servo, wrist: Servo, gripper: Servo, upperArmLength: int, lowerArmLength: int, wristLength: int):
        self.base = base
        self.shoulder = shoulder
        self.elbow = elbow
@@ -55,8 +59,9 @@ class Arm:
 
 
 
+
         ## --
         print(f"Arm moved to position ({x}, {y}, {z})")
 
 if __name__ == "__main__":
-    ...
+    print("This must be run as a module, not as main")
