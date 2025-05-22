@@ -2,7 +2,7 @@ import tkinter as tk
 import servoClass
 import os
 import time
-arm = servoClass.Arm(servoClass.Servo(1, 0, 180), servoClass.Servo(2, 45, 135), servoClass.Servo(3, 0, 180), servoClass.Servo(4, 0, 180), servoClass.Servo(5, 0, 180))
+arm = servoClass.Arm(servoClass.Servo(1, 0, 180), servoClass.Servo(2, 45, 135), servoClass.Servo(3, 0, 180), servoClass.Servo(4, 0, 180), servoClass.Servo(5, 0, 180), 30, 30, 10)
 
 armScriptsDirectory = "/home/anton/Programming/EPQ/src/armscripts"
 
@@ -27,7 +27,7 @@ def go(): # moveTo FUNCTION
     stdout("moving to " + str((x, y, z)), 0)
     #print(console.get(1.0, tk.END))
     arm.moveArm(x, y, z)
-    ###### WRITE CODE FOR MOVING ARM TO THESE COORDINATES
+    
     
 def ScaleUp():
     scaleEntry.set(incrementString(scaleEntry.get(), 1))
@@ -59,8 +59,6 @@ def listScripts():
     return os.listdir(armScriptsDirectory)
 
 
-
-##########################
 
 
 
